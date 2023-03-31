@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  light:
+    env_file:
+    - env_prod.env
+    - env_secrets.env
+    build: .
+    container_name: let_there_be_light
+    labels:
+      ofelia.enabled: "true"
+      ofelia.job-exec.schedule_on_morning.schedule: $SCHEDULE_ON_MORNING
+      ofelia.job-exec.schedule_on_morning.command: "python let_there_be_light.py --action turnOn"
+      ofelia.job-exec.schedule_off_morning.schedule: $SCHEDULE_OFF_MORNING
+      ofelia.job-exec.schedule_off_morning.command: "python let_there_be_light.py --action turnOff"
+      ofelia.job-exec.schedule_on_evening.schedule: $SCHEDULE_ON_EVENING
+      ofelia.job-exec.schedule_on_evening.command: "python let_there_be_light.py --action turnOn"
+      ofelia.job-exec.schedule_off_evening.schedule: $SCHEDULE_OFF_EVENING
+      ofelia.job-exec.schedule_off_evening.command: "python let_there_be_light.py --action turnOff"
