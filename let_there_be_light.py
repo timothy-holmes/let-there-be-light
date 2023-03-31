@@ -1,5 +1,4 @@
 import argparse
-import json
 from os import environ as ENV_VARS
 
 from .logger import log
