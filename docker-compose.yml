@@ -5,6 +5,7 @@ services:
     - env_prod.env
     - env_secrets.env
     build: .
+    command: ['tail', '-f', '/dev/null']
     container_name: let_there_be_light
     labels:
       ofelia.enabled: "true"
