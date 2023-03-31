@@ -23,9 +23,9 @@ Usage:
 """
 
 with open("logging_config.json", "r") as config_json:
-    logging.config.dictConfig(json.load(config_json))
+    logging.config.dictConfig(json.load(config_json)['config'])
 
-log = logging.getLogger('bom-bot')
+log = logging.getLogger('let-there-be-light-logger')
 
 def build_logger(name: str):
     log = logging.getLogger(name)

@@ -1,5 +1,5 @@
 {
-    "name": "iot_controller",
+    "name": "let-there-be-light-logger",
     "config": {
         "version": 1,
         "formatters": {

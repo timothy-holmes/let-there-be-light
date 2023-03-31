@@ -1,9 +1,8 @@
 import argparse
 from os import environ as ENV_VARS
 
-from .logger import log
-from .light import Light
-
+from logger import log
+from light import Light
 
 def main(action):
     ltbl = Light(log=log, config=ENV_VARS)
