@@ -1,5 +1,13 @@
 version: "3.8"
 services:
+  ofelia:
+    container_name: bom-bot-ofelia
+    image: mcuadros/ofelia:latest
+    depends_on:
+      - light
+    command: daemon --docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
   light:
     env_file:
     - env_prod.env
