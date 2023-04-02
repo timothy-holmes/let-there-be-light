@@ -1,8 +1,10 @@
 version: "3.8"
 services:
   ofelia:
-    container_name: bom-bot-ofelia
+    container_name: light-ofelia
     image: mcuadros/ofelia:latest
+    environment:
+      - TZ=Australia/Melbourne
     depends_on:
       - light
     command: daemon --docker
@@ -10,8 +12,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
   light:
     env_file:
-    - env_prod.env
-    - env_secrets.env
+    - .env.secrets
     build: .
     command: ['tail', '-f', '/dev/null']
     container_name: let_there_be_light
