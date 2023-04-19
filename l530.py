@@ -42,13 +42,13 @@ class L530Controller:
             return 'Method not allowed'
         
         try:
-            getattr(self.obj,action_str)()
+            getattr(self.obj,action_str.split('-')[0])()
             if '-' in action_str:
                 self.obj.setBrightness(100)
                 self.obj.setColor(colors[action_str.split('-')[1]],100)
         except Exception as e1:
             self._authenticate()
-            getattr(self.obj,action_str)()
+            getattr(self.obj,action_str.split('-')[0])()
             if '-' in action_str:
                 self.obj.setBrightness(100)
                 self.obj.setColor(colors[action_str.split('-')[1]],100)
