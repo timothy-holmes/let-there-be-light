@@ -4,9 +4,10 @@ from os import environ as ENV_VARS
 from logger import log
 from light import Light
 
-def main(action):
-    ltbl = Light(log=log, config=ENV_VARS)
-    ltbl.action(action)
+def main(action,devices):
+    for device in devices:
+        ltbl = Light(log=log, device=device, config=ENV_VARS)
+        ltbl.action(action)
 
 
 if __name__ == "__main__":
@@ -17,5 +18,12 @@ if __name__ == "__main__":
         type=str, 
         help='Perform action: turnOn, turnOff, getDeviceInfo, getEnergyUsage'
     )
+    parser.add_argument(
+        '--devices', 
+        dest='devices', 
+        #type=str,
+        nargs='+',
+        help='Specify one or more devices: p110-[desk,couch,kallax].iot.home'
+    )
     args = parser.parse_args()
-    main(args.action)
+    main(args.action,args.devices)
