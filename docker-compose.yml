@@ -18,11 +18,15 @@ services:
     container_name: let_there_be_light
     labels:
       ofelia.enabled: "true"
-      ofelia.job-exec.schedule_on_morning.schedule: $SCHEDULE_ON_MORNING
-      ofelia.job-exec.schedule_on_morning.command: "python let_there_be_light.py --action turnOn"
+      ofelia.job-exec.schedule_amb_on_morning.schedule: $SCHEDULE_AMB_ON_MORNING
+      ofelia.job-exec.schedule_amb_on_morning.command: "python let_there_be_light.py --action turnOn --devices p110-kallax.iot.home"
+      ofelia.job-exec.schedule_bed_on_morning.schedule: $SCHEDULE_BED_ON_MORNING
+      ofelia.job-exec.schedule_bed_on_morning.command: "python let_there_be_light.py --action turnOn --devices p110-kallax.iot.home"
       ofelia.job-exec.schedule_off_morning.schedule: $SCHEDULE_OFF_MORNING
-      ofelia.job-exec.schedule_off_morning.command: "python let_there_be_light.py --action turnOff"
-      ofelia.job-exec.schedule_on_evening.schedule: $SCHEDULE_ON_EVENING
-      ofelia.job-exec.schedule_on_evening.command: "python let_there_be_light.py --action turnOn"
+      ofelia.job-exec.schedule_off_morning.command: "python let_there_be_light.py --action turnOff --devices p110-couch.iot.home p110-kallax.iot.home"
+      ofelia.job-exec.schedule_amb_on_evening.schedule: $SCHEDULE_AMB_ON_EVENING
+      ofelia.job-exec.schedule_amb_on_evening.command: "python let_there_be_light.py --action turnOn --devices p110-couch.iot.home p110-desk.iot.home p110-kallax.iot.home"
+      ofelia.job-exec.schedule_bed_on_evening.schedule: $SCHEDULE_BED_ON_EVENING
+      ofelia.job-exec.schedule_bed_on_evening.command: "python let_there_be_light.py --action turnOn --devices p110-couch.iot.home p110-desk.iot.home p110-kallax.iot.home"      
       ofelia.job-exec.schedule_off_evening.schedule: $SCHEDULE_OFF_EVENING
-      ofelia.job-exec.schedule_off_evening.command: "python let_there_be_light.py --action turnOff"
+      ofelia.job-exec.schedule_off_evening.command: "python let_there_be_light.py --action turnOff --devices p110-couch.iot.home p110-kallax.iot.home"

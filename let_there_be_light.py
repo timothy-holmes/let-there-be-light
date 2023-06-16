@@ -6,8 +6,11 @@ from device import Device
 
 def main(action,devices):
     for device in devices:
-        ltbl = Device(log=log, device=device, config=ENV_VARS)
-        ltbl.action(action)
+        try:
+            ltbl = Device(log=log, device=device, config=ENV_VARS)
+            ltbl.action(action)
+        except Exception as e:
+            pass
     
 
 
